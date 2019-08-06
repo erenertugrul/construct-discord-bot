@@ -1,0 +1,7 @@
+{
+  "name": "construct-tr-discord",
+  "version": "0.0.1",
+  "description": "Construct Türkiye Discord Botu",
+  "private": true,
+  "main": "index.js"
+}
