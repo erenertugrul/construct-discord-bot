@@ -2,7 +2,7 @@
   "name": "construct-turkiye-discord",
   "version": "0.0.1",
   "description": "Construct Türkiye discord kanal botu",
-  "main": "index.js",
+  "main": "src/index.js",
   "private":true,
   "author": "Eren Ertuğrul",
   "license": "MIT",
