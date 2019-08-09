@@ -18,20 +18,6 @@ class Construct
 		//https://www.construct.net/sitemap_productrelease_1.xml
 		return "https://editor.construct.net/versions.json"
 	}
-
-	static tokenat(text, index_, sep)
-	{
-		var arr = text.split(sep);
-		var i = Math.floor(index_);
-		if (i < 0 || i >= arr.length)
-			return ("");
-		else
-			return(arr[i]);
-	}
-	static right(text, n)
-	{
-		return (text.substr(text.length - n));
-	}
 	static komut_c2(message)
 	{
 		var database = firebase.database();
