@@ -2,6 +2,7 @@ const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
 const request = require('request');
 var firebase = require('firebase');
+const cheerio = require('cheerio');
 
 class Construct
 {
@@ -91,6 +92,22 @@ class Construct
 				}
 			});
       	});
+	}
+	static komut_forum(message)
+	{
+		var online_list = new Array;
+		request("https://www.construct.net/en/forum",function (error,response,body) {
+	  		const $ = cheerio.load(body);
+		    $('.activeUsers li > div > div:nth-child(2) > div > a>span:nth-child(1)').each(function (i, e) {
+		        online_list[i] = $(this).text();
+		    });
+		    const embed = new RichEmbed()
+			.setTitle('Şu an forumda olanlar')
+			.setColor(0xFF0000)
+			.setDescription(online_list)
+			.addField('forum:', 'https://www.construct.net/en/forum')
+			message.channel.send(embed);
+		})
 	}
 }
 

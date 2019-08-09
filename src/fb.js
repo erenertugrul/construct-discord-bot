@@ -1,3 +1,4 @@
+require('dotenv').config();
 var firebase = require('firebase');
 const fb_ayar ={
 	apiKey: process.env.apiKey,
