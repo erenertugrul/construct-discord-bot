@@ -12,7 +12,6 @@ var firebase = require('firebase');
             memberName: 'forum',
             description: 'forum sürümünü öğrenirsin.',
             examples: ['forum'],
-
 		})
 	}
     /*

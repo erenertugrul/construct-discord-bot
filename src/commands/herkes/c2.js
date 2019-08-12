@@ -12,7 +12,6 @@ var firebase = require('firebase');
             memberName: 'c2',
             description: 'c2 sürümünü öğrenirsin.',
             examples: ['c2'],
-
 		})
 	}
     /*

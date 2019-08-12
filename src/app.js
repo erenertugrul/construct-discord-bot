@@ -10,6 +10,7 @@ const client = new Commando.Client({
     commandPrefix: '!',
     owner: '478933409276624896',
     disableEveryone: false,
+    unknownCommandResponse: false,
 });
 
 client.registry.registerGroups([['herkes', 'herkes kullanabilir']]).registerDefaults().registerCommandsIn(path.join(__dirname, 'commands'));
@@ -18,6 +19,8 @@ client.on("ready", () => {
 	console.log("hazir");
  // setInterval(() => scirra.check_c2(client), 5000);
  // setInterval(() => scirra.check_c3(client), 5000);
+  scirra.check_c2(client);
+  scirra.check_c3(client);
 });
  
 client.on("message", (message) => {
@@ -27,6 +30,14 @@ client.on("message", (message) => {
   	if (message.content.startsWith("selam")) {
 	    message.channel.send("Merhaba "+message.author.username);
   	}
+    if (message.channel.type == "dm")
+    {
+      if (message.content.startsWith("naber"))
+      {
+        message.author.send("iyi :(")
+      }
+    }
+
 
 });
  

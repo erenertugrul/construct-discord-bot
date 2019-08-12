@@ -12,7 +12,6 @@ var firebase = require('firebase');
             memberName: 'c3',
             description: 'c3 sürümünü öğrenirsin.',
             examples: ['c3'],
-
 		})
 	}
     /*
