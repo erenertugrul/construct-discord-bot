@@ -17,10 +17,10 @@ client.registry.registerGroups([['herkes', 'herkes kullanabilir']]).registerDefa
 
 client.on("ready", () => {
 	console.log("hazir");
- // setInterval(() => scirra.check_c2(client), 5000);
- // setInterval(() => scirra.check_c3(client), 5000);
-  scirra.check_c2(client);
-  scirra.check_c3(client);
+ setInterval(() => scirra.check_c2(client), 600000);
+ setInterval(() => scirra.check_c3(client), 600000);
+  //scirra.check_c2(client);
+  //scirra.check_c3(client);
 });
  
 client.on("message", (message) => {
