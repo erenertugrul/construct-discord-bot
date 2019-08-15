@@ -14,10 +14,12 @@ var firebase = require('firebase');
             examples: ['forum'],
 		})
 	}
-    /*
-    hasPermission(msg) {
-        if(!msg.guild) return this.client.isOwner(msg.author);
-        return msg.member.hasPermission('ADMINISTRATOR') || this.client.isOwner(msg.author);
+    
+    /*hasPermission(msg) {
+        //if(!msg.guild) return this.client.isOwner(msg.author);
+        if(msg.channel.id == "609017383029309443")
+            return true;
+        //return msg.member.hasPermission('ADMINISTRATOR') || this.client.isOwner(msg.author);
     }*/
 
     run(msg) {

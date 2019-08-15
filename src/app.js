@@ -27,7 +27,8 @@ client.on("message", (message) => {
   	/*if (message.content.startsWith("!forum")) {
 	    uye_listesi(message);
   	}*/
-  	if (message.content.startsWith("selam")) {
+  	if (message.content.startsWith("selam")) 
+    {
 	    message.channel.send("Merhaba "+message.author.username);
   	}
     if (message.channel.type == "dm")
@@ -37,8 +38,8 @@ client.on("message", (message) => {
         message.author.send("iyi :(")
       }
     }
-
-
 });
  
-client.login(process.env.discord_key);
+//client.login(process.env.discord_key);
+client.login("NTE3NjM5MzM3MjI4MTA3Nzg3.XVVIXQ.o2lTV60O9b8O2CQhTW_LghU2iJM");
+
