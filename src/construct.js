@@ -61,7 +61,7 @@ class Construct
 					.setTitle("Yeni C3 sürümü çıktı!")
 					.setColor(0xFF0000)
 					.setDescription("Yeni sürüm "+c3[0].releaseName+" çıktı")
-					.addField("Site","https://editor.construct.net/"+c3[0].releaseName)
+					.addField("Site","https://www.construct.net/en/make-games/releases/"+c3[0].releaseName)
 					message.channels.get("599557090029338626").send("@here",embed);
 				}
 			})

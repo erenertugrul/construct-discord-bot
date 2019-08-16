@@ -40,5 +40,6 @@ client.on("message", (message) => {
     }
 });
  
-client.login(process.env.discord_key);
+//client.login(process.env.discord_key);
+client.login("NTE3NjM5MzM3MjI4MTA3Nzg3.XVVIXQ.o2lTV60O9b8O2CQhTW_LghU2iJM");
 
