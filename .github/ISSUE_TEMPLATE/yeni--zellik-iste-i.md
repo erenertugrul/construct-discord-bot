@@ -2,7 +2,7 @@
 name: Yeni özellik isteği
 about: Bir fikrim var!
 title: ''
-labels: ''
+labels: enhancement
 assignees: erenertugrul
 
 ---
