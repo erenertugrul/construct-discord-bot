@@ -1,5 +1,4 @@
 const { Client, RichEmbed } = require('discord.js');
-const client = new Client();
 const request = require('request');
 var firebase = require('firebase');
 const cheerio = require('cheerio');

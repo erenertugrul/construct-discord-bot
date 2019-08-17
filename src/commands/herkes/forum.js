@@ -1,8 +1,7 @@
 const { Command } = require('discord.js-commando');
 //const path = require('path');
 const scirra = require('../../construct.js');
-var firebase = require('firebase');
- class forum extends Command
+class forum extends Command
 {
 	constructor(client)
 	{
