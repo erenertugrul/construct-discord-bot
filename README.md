@@ -1,6 +1,8 @@
 # construct-discord-bot
 Construct Türkiye Discord Sunucu Botu
 
+https://discordapp.com/invite/NM8fgPa
+
 
 Kurulum
 ```
