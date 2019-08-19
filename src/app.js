@@ -14,7 +14,7 @@ const client = new Commando.Client(
     unknownCommandResponse: false,
 });
 
-client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCommands({help:false, prefix:false, ping:true, eval_:false, commandState:false}).registerGroups([['herkes', 'herkes kullanabilir']]).registerCommandsIn(path.join(__dirname, 'commands'));
+client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCommands({ help:false, prefix:false, ping:false, eval_:false, commandState:false }).registerGroups([['herkes', 'construct komutları'],['araclar', 'yardımcı araçlar']]).registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on("ready",() => {
   console.log("hazir");
@@ -38,7 +38,7 @@ client.on("message",(message) => {
     }
 });
 client.on('guildMemberAdd', member => {
-   member.guild.channels.get('598446314631725057').send("Hoşgeldin <@"+ member.user.id +">").then(m =>m.react("👍"));
+   member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına Hoşgeldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardim yazabilirsin. :) ").then(m =>m.react("👍"));
 });
 client.on('guildMemberRemove', member => {
    member.guild.channels.get('598446314631725057').send("Hoşçakal <@"+ member.user.id +">");
