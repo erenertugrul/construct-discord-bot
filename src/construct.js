@@ -61,7 +61,7 @@ class Construct
 					.setColor(0xFF0000)
 					.setDescription("Yeni sürüm "+c3[0].releaseName+" çıktı")
 					.addField("Site","https://www.construct.net/en/make-games/releases/"+c3[0].releaseName)
-					message.channels.get("599557090029338626").send("@here",embed);
+					message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
 				}
 			})
 		})
@@ -85,7 +85,7 @@ class Construct
 						.setColor(0xFF0000)
 						.setDescription("Yeni sürüm "+x+" çıktı")
 						.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
-						message.channels.get("599557090029338626").send("@here",embed);
+						message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
 						//message.channel.send(embed); 609017383029309443
 					}
 				}

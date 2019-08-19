@@ -38,7 +38,7 @@ client.on("message",(message) => {
     }
 });
 client.on('guildMemberAdd', member => {
-   member.guild.channels.get('598446314631725057').send("Hoşgeldin <@"+ member.user.id +">");
+   member.guild.channels.get('598446314631725057').send("Hoşgeldin <@"+ member.user.id +">").then(m =>m.react("👍"));
 });
 client.on('guildMemberRemove', member => {
    member.guild.channels.get('598446314631725057').send("Hoşçakal <@"+ member.user.id +">");
