@@ -14,7 +14,7 @@ const client = new Commando.Client(
     unknownCommandResponse: false,
 });
 
-client.registry.registerGroups([['herkes', 'herkes kullanabilir']]).registerDefaults().registerCommandsIn(path.join(__dirname, 'commands'));
+client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCommands({help: false,prefix: false,eval: false,ping: true,unknownCommand: false,commandState: false,}).registerGroups([['herkes', 'herkes kullanabilir']]).registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on("ready",() => {
   console.log("hazir");
@@ -37,5 +37,7 @@ client.on("message",(message) => {
       }
     }
 });
-
+client.on('guildMemberAdd', member => {
+   member.guild.channels.get('598446314631725057').send("Hoşgeldin <@"+ member.user.id +">");
+});
 client.login(process.env.discord_key);
