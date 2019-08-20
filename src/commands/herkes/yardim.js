@@ -55,7 +55,7 @@ module.exports = class HelpCommand extends Command {
 				const messages = [];
 				try {
 					messages.push(await msg.direct(help));
-					if(msg.channel.type !== 'dm') messages.push(await msg.reply('Size özel mesaj gönderdim :)'));
+					if(msg.channel.type !== 'dm') messages.push(await msg.reply('size özel mesaj gönderdim :)'));
 				} catch(err) {
 					messages.push(await msg.reply('Size özel mesaj gönderemiyorum. Muhtemelen özel mesaj alımını engellemişsiniz. :('));
 				}
@@ -87,7 +87,7 @@ module.exports = class HelpCommand extends Command {
 						`).join('\n\n')
 					}
 				`, { split: true }));
-				if(msg.channel.type !== 'dm') messages.push(await msg.reply('Size özel mesaj gönderdim :)'));
+				if(msg.channel.type !== 'dm') messages.push(await msg.reply('size özel mesaj gönderdim :)'));
 			} catch(err) {
 				messages.push(await msg.reply('Size özel mesaj gönderemiyorum. Muhtemelen özel mesaj alımını engellemişsiniz. :('));
 			}
