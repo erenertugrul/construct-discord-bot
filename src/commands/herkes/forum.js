@@ -9,7 +9,7 @@ class forum extends Command
             name: 'forum',
             group: 'herkes',
             memberName: 'forum',
-            description: 'forum sürümünü öğrenirsin.',
+            description: 'forumdaki online üyeleri görürsün',
             examples: ['forum'],
 		})
 	}
