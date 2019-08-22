@@ -1,6 +1,8 @@
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/erenertugrul/construct-discord-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/erenertugrul/construct-discord-bot/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/erenertugrul/construct-discord-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/erenertugrul/construct-discord-bot/context:javascript)
+
 # construct-discord-bot
 Construct Türkiye Discord Sunucu Botu
-
 https://discordapp.com/invite/NM8fgPa
 
 
