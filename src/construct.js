@@ -60,8 +60,21 @@ class Construct
 					.setTitle("Yeni C3 sürümü çıktı!")
 					.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
 					.setColor(0xFF0000)
-					.setDescription("Yeni sürüm "+c3[0].releaseName+" çıktı")
-					.addField("Site","https://www.construct.net/en/make-games/releases/"+c3[0].releaseName)
+					.setDescription("Yeni sürüm (beta) "+c3[0].releaseName+" çıktı")
+					.setDescription("Sürüm açıklaması :"+c3[0].shortDescription)
+					.addField("Site",c3[0].viewDetailsURL)
+					message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+				}
+				else if (c3[1].releaseName > fv)
+				{
+					database.ref("c3_version").set(c3[1].releaseName);
+					var embed = new RichEmbed()
+					.setTitle("Yeni C3 sürümü çıktı!")
+					.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
+					.setColor(0xFF0000)
+					.setDescription("Yeni sürüm "+c3[1].releaseName+" çıktı")
+					.setDescription("Sürüm açıklaması :"+c3[1].shortDescription)
+					.addField("Site",c3[0].viewDetailsURL)
 					message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
 				}
 			})
