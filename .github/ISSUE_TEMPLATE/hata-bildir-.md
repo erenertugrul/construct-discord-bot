@@ -10,8 +10,5 @@ assignees: erenertugrul
 **Hata kısa açıklaması**
 
 
-**Hata adımları**
-
-
 
 **Ekran görüntüleri**
