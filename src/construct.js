@@ -83,23 +83,25 @@ class Construct
 		var database = firebase.database();
 		request("https://www.scirra.com/construct2/version.txt",function(error,response,body){
 			var v = body.split("\n");
-			//console.log(v);
 			database.ref('c2_version').once('value').then(async (snapshot) => {
 	      		const title = snapshot.val();
 				for(var i=0; i < v.length; i++)
 				{
 					if (v[i].substr(49) > title)
-					{	var x = v[i].substr(49);
-
-						database.ref('c2_version').set(x);
-						const embed = new RichEmbed()
-						.setTitle("Yeni C2 sürümü çıktı!")
-						.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c2_logo.png')
-						.setColor(0xFF0000)
-						.setDescription("Yeni sürüm "+x+" çıktı")
-						.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
-						message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
-						//message.channel.send(embed); 609017383029309443
+					{
+						if (v[i].substr(49).length <= 6)
+						{
+							var x = v[i].substr(49);
+							database.ref('c2_version').set(x);
+							const embed = new RichEmbed()
+							.setTitle("Yeni C2 sürümü çıktı!")
+							.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c2_logo.png')
+							.setColor(0xFF0000)
+							.setDescription("Yeni sürüm "+x+" çıktı")
+							.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
+							message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+							//message.channel.send(embed); 609017383029309443
+						}
 					}
 				}
 			});
