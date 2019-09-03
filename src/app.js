@@ -29,13 +29,13 @@ client.on("message",(message) => {
   {
     message.channel.send("Merhaba "+message.author.username);
   }
-  if (message.channel.type == "dm")
+  /*if (message.channel.type == "dm")
   {
     if (message.content.startsWith("naber"))
       {
       message.author.send("iyi :(")
     }
-  }
+  }*/
   if (message.content.startsWith("naber"))
   {
     message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
