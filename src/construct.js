@@ -85,7 +85,7 @@ class Construct
 			var v = body.split("\n");
 			database.ref('c2_version').once('value').then(async (snapshot) => {
 	      		const title = snapshot.val();
-				for(var i=0; i < v.length; i++)
+				for(var i=0; i < 1; i++)
 				{
 					if (v[i].substr(49) > title)
 					{
