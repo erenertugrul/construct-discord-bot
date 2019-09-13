@@ -81,11 +81,11 @@ class Construct
 	static check_c2(message)
 	{
 		var database = firebase.database();
-		request("https://www.scirra.com/construct2/version.txt",function(error,response,body){
+		request(this.c2,function(error,response,body){
 			var v = body.split("\n");
 			database.ref('c2_version').once('value').then(async (snapshot) => {
 	      		const title = snapshot.val();
-				for(var i=0; i < 1; i++)
+				for(var i=0; i < v.length; i++)
 				{
 					if (v[i].substr(49) > title)
 					{
@@ -100,6 +100,7 @@ class Construct
 							.setDescription("Yeni sürüm "+x+" çıktı")
 							.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
 							message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+							break;
 							//message.channel.send(embed); 609017383029309443
 						}
 					}
