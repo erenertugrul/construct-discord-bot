@@ -25,21 +25,23 @@ client.on("ready",() => {
 });
 
 client.on("message",(message) => {
+  /*
   if (message.content.startsWith("selam") || message.content.startsWith("Selam"))
   {
     message.channel.send("Merhaba "+message.author.username);
   }
-  /*if (message.channel.type == "dm")
+  if (message.channel.type == "dm")
   {
     if (message.content.startsWith("naber"))
       {
       message.author.send("iyi :(")
     }
-  }*/
+  }
   if (message.content.startsWith("naber"))
   {
     message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
   }
+  */
 });
 client.on('guildMemberAdd', member => {
    member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardim yazabilirsin. :) ").then(m =>m.react("👍"));
