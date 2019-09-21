@@ -49,64 +49,74 @@ class Construct
 	static check_c3(message)
 	{
 		var database = firebase.database();
-		request(this.c3,function(error,response,body){
-			var c3 = JSON.parse(body);
-			database.ref("c3_version").once("value").then(async (v) =>{
-				var fv = v.val();
-				if (c3[0].releaseName > fv)
-				{
-					database.ref("c3_version").set(c3[0].releaseName);
-					var embed = new RichEmbed()
-					.setTitle("Yeni C3 sürümü çıktı!")
-					.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
-					.setColor(0xFF0000)
-					.setDescription("Yeni sürüm (beta) "+c3[0].releaseName+" çıktı. \n\n Sürüm açıklaması: "+c3[0].shortDescription)
-					.addField("Site",c3[0].viewDetailsURL)
-					message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
-				}
-				else if (c3[1].releaseName > fv)
-				{
-					database.ref("c3_version").set(c3[1].releaseName);
-					var embed = new RichEmbed()
-					.setTitle("Yeni C3 sürümü çıktı!")
-					.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
-					.setColor(0xFF0000)
-					.setDescription("Yeni sürüm "+c3[1].releaseName+" çıktı. \n\n Sürüm açıklaması: "+c3[1].shortDescription)
-					.addField("Site",c3[1].viewDetailsURL)
-					message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
-				}
+		try{
+			request(this.c3,function(error,response,body){
+				var c3 = JSON.parse(body);
+				database.ref("c3_version").once("value").then(async (v) =>{
+					var fv = v.val();
+					if (c3[0].releaseName > fv)
+					{
+						database.ref("c3_version").set(c3[0].releaseName);
+						var embed = new RichEmbed()
+						.setTitle("Yeni C3 sürümü çıktı!")
+						.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
+						.setColor(0xFF0000)
+						.setDescription("Yeni sürüm (beta) "+c3[0].releaseName+" çıktı. \n\n Sürüm açıklaması: "+c3[0].shortDescription)
+						.addField("Site",c3[0].viewDetailsURL)
+						message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+					}
+					else if (c3[1].releaseName > fv)
+					{
+						database.ref("c3_version").set(c3[1].releaseName);
+						var embed = new RichEmbed()
+						.setTitle("Yeni C3 sürümü çıktı!")
+						.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c3_logo.png')
+						.setColor(0xFF0000)
+						.setDescription("Yeni sürüm "+c3[1].releaseName+" çıktı. \n\n Sürüm açıklaması: "+c3[1].shortDescription)
+						.addField("Site",c3[1].viewDetailsURL)
+						message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+					}
+				})
 			})
-		})
+		}
+		catch(e){
+			console.log(e);
+		}
 	}
 	static check_c2(message)
 	{
 		var database = firebase.database();
-		request(this.c2,function(error,response,body){
-			var v = body.split("\n");
-			database.ref('c2_version').once('value').then(async (snapshot) => {
-	      		const title = snapshot.val();
-				for(var i=0; i < v.length; i++)
-				{
-					if (v[i].substr(49) > title)
+		try{
+			request(this.c2,function(error,response,body){
+				var v = body.split("\n");
+				database.ref('c2_version').once('value').then(async (snapshot) => {
+		      		const title = snapshot.val();
+					for(var i=0; i < v.length; i++)
 					{
-						if (v[i].substr(49).length <= 6)
+						if (v[i].substr(49) > title)
 						{
-							var x = v[i].substr(49);
-							database.ref('c2_version').set(x);
-							const embed = new RichEmbed()
-							.setTitle("Yeni C2 sürümü çıktı!")
-							.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c2_logo.png')
-							.setColor(0xFF0000)
-							.setDescription("Yeni sürüm "+x+" çıktı")
-							.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
-							message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
-							break;
-							//message.channel.send(embed); 609017383029309443
+							if (v[i].substr(49).length <= 6)
+							{
+								var x = v[i].substr(49);
+								database.ref('c2_version').set(x);
+								const embed = new RichEmbed()
+								.setTitle("Yeni C2 sürümü çıktı!")
+								.setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/c2_logo.png')
+								.setColor(0xFF0000)
+								.setDescription("Yeni sürüm "+x+" çıktı")
+								.addField("indirmek için","https://www.scirra.com/construct2/releases/"+x)
+								message.channels.get("599557090029338626").send("@here",embed).then(m =>m.react("👍"));
+								break;
+								//message.channel.send(embed); 609017383029309443
+							}
 						}
 					}
-				}
-			});
-      	});
+				});
+      		});
+		}
+		catch(e){
+			console.log(e);
+		}
 	}
 	static komut_forum(message)
 	{
