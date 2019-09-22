@@ -25,9 +25,15 @@ client.on("ready",() => {
 });
 
 client.on("message",(message) => {
-  if (message.attachments.first().filename.includes("capx") || message.attachments.first().filename.includes("c3p"))
+  if (message.channel.id == "599560254623318017")
   {
-    message.pin();
+    message.attachments.forEach(attachment => {
+      const url = attachment.filename;
+      if (url.includes("capx") || url.includes("c3p"))
+      {
+        message.pin();
+      }
+    });
   }
   if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
   {
