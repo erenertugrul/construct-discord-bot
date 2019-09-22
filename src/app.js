@@ -25,7 +25,10 @@ client.on("ready",() => {
 });
 
 client.on("message",(message) => {
-  
+  if (message.attachments.first().filename.includes("capx") || message.attachments.first().filename.includes("c3p"))
+  {
+    message.pin();
+  }
   if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
   {
     message.channel.send("Merhaba "+message.author.username);
