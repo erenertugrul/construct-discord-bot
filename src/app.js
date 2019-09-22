@@ -25,6 +25,10 @@ client.on("ready",() => {
 });
 
 client.on("message",(message) => {
+  if (message.type == "PINS_ADD")
+  {
+    message.delete();
+  }
   if (message.channel.id == "599560254623318017")
   {
     message.attachments.forEach(attachment => {
