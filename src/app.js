@@ -26,7 +26,7 @@ client.on("ready",() => {
 
 client.on("message",(message) => {
   
-  if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba") || message.content.startsWith("merhaba"))
+  if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
   {
     message.channel.send("Merhaba "+message.author.username);
   }
