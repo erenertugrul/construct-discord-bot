@@ -33,7 +33,7 @@ class durum extends Command
     }
     
     hasPermission(msg) {
-        if(!msg.guild) return this.client.isOwner(msg.author);
+        //if(!msg.guild) return this.client.isOwner(msg.author);
         if ((msg.channel.type !== "dm")) return false;
         return msg.member.hasPermission('Admin') || this.client.isOwner(msg.author) || (msg.member.id == "174242106766786570");
     }
