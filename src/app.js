@@ -14,7 +14,7 @@ const client = new Commando.Client(
     unknownCommandResponse: false,
 });
 
-client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCommands({ help:false, prefix:false, ping:false, eval_:false, commandState:false }).registerGroups([['herkes', 'construct komutları'],['araclar', 'yardımcı araçlar']]).registerCommandsIn(path.join(__dirname, 'commands'));
+client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCommands({ help:false, prefix:false, ping:false, eval_:false, commandState:false }).registerGroups([['herkes', 'construct komutları'],['araclar', 'yardımcı araçlar'],['yonetim','yönetici komutları']]).registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.on("ready",() => {
   console.log("hazir");
