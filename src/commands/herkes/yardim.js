@@ -7,9 +7,9 @@ function disambiguation(items, label, property = 'name') {
 module.exports = class HelpCommand extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'yardim',
+			name: 'yardım',
 			group: 'araclar',
-			memberName: 'yardim',
+			memberName: 'yardım',
 			description: 'Kullanabileceğiniz komutların listesini görürsünüz.',
 			details: oneLine`
 				The command may be part of a command name or a whole command name.
