@@ -95,7 +95,7 @@ class Construct
 					{
 						if (v[i].substr(49) > title)
 						{
-							if (v[i].substr(49).length <= 6)
+							if (v[i].substr(49).length <= 6 && v[i].substr(49).includes("r2"))
 							{
 								var x = v[i].substr(49);
 								database.ref('c2_version').set(x);
