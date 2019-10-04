@@ -42,7 +42,7 @@ class bedavaoyun extends Command
             .setColor("RANDOM")
             .setDescription(j.bedava)
             .setURL(j.bedava)
-            this.client.channels.get("625385787093024799").send(embed).then(m =>m.react(":video_game:"));
+            this.client.channels.get("629688253905109002").send(embed).then(m =>m.react("🆓"));
         }
       }
     }
