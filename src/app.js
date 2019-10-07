@@ -25,6 +25,7 @@ client.on("ready",() => {
 });
 
 client.on("message",(message) => {
+  // capx pinleme
   if (message.type == "PINS_ADD")
   {
     message.delete();
@@ -39,6 +40,19 @@ client.on("message",(message) => {
       }
     });
   }
+  // güncelleme kontrol
+  if (message.channel.type == "dm")
+  {
+    if (message.author.id == "478933409276624896")
+    {
+      if (message.content.startsWith("!check"))
+      {
+        scirra.check_c2(client);
+        scirra.check_c3(client);
+      }
+    }
+  }
+  // selam cevapları
   if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
   {
     message.channel.send("Merhaba "+message.author.username);
@@ -47,10 +61,7 @@ client.on("message",(message) => {
   {
     message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
   }
-  /*if (message.channel.type == "dm")
-  {
-    
-  }*/
+
 });
 client.on('guildMemberAdd', member => {
    member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
