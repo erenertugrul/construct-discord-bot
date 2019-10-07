@@ -50,6 +50,10 @@ client.on("message",(message) => {
         scirra.check_c2(client);
         scirra.check_c3(client);
       }
+      if (message.content.startsWith("!kapat"))
+      {
+        process.exit(0);
+      }
     }
   }
   // selam cevapları
