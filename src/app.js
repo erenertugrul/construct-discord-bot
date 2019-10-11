@@ -54,6 +54,24 @@ client.on("message",(message) => {
       {
         process.exit(0);
       }
+
+      // key testi
+      if (message.content === "!fb")
+      {
+        var sunucu = client.guilds.get("598446314165895168");
+        sunucu.fetchMembers()
+        .then(a=>a.members.map(function(x){
+          firebase.database().ref("discord_userlist").once("value")
+          .then(
+            function(a){
+              if (a.child(x.user.id).val() == null)
+              {
+                firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":"0"});
+              }
+            }
+          )
+        }))
+      }
     }
   }
   // selam cevapları
@@ -69,6 +87,15 @@ client.on("message",(message) => {
 });
 client.on('guildMemberAdd', member => {
    member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
+   firebase.database().ref("discord_userlist").once("value")
+  .then(
+    function(a){
+      if (a.child(member.user.id).val() == null)
+      {
+        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0"});
+      }
+    }
+  )
 });
 client.on('guildMemberRemove', member => {
   member.guild.channels.get('598446314631725057').send("Hoşçakal "+ member.user.tag).then(m =>m.react("😔"));
