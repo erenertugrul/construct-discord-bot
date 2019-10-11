@@ -2,6 +2,7 @@
 const  Commando  = require('discord.js-commando');
 const path = require('path');
 const scirra = require('./construct.js');
+var firebase = require('firebase');
 require('dotenv').config();
 require('./fb.js');
 
