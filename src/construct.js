@@ -51,7 +51,13 @@ class Construct
 		var database = firebase.database();
 		try{
 			request(this.c3,function(error,response,body){
-				var c3 = JSON.parse(body);
+				try{
+					var c3 = JSON.parse(body);
+				}
+				catch(e)
+				{
+					console.log(e);
+				};
 				database.ref("c3_version").once("value").then(async (v) =>{
 					var fv = v.val();
 					if (c3[0].releaseName > fv)
@@ -88,7 +94,13 @@ class Construct
 		var database = firebase.database();
 		try{
 			request(this.c2,function(error,response,body){
-				var v = body.split("\n");
+				try{
+					var v = body.split("\n");
+				}
+				catch(e)
+				{
+					console.log(e);
+				};
 				database.ref('c2_version').once('value').then(async (snapshot) => {
 		      		const title = snapshot.val();
 					for(var i=0; i < v.length; i++)
