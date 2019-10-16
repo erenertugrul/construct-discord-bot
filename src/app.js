@@ -69,6 +69,13 @@ client.on("message",(message) => {
               {
                 firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":"0"});
               }
+              else
+              {
+                firebase.database().ref("discord_userlist/"+x.user.id).once("value").then(function(a){
+                  a.ref.child("durum").set("aktif");
+                  a.ref.child("tag").set(x.user.tag);
+                })
+              }
             }
           )
         }))
@@ -93,13 +100,16 @@ client.on('guildMemberAdd', member => {
     function(a){
       if (a.child(member.user.id).val() == null)
       {
-        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0"});
+        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif"});
       }
     }
   )
 });
 client.on('guildMemberRemove', member => {
   member.guild.channels.get('598446314631725057').send("Hoşçakal "+ member.user.tag).then(m =>m.react("😔"));
+  firebase.database().ref("discord_userlist/"+message.user.id).once("value").then(function(a){
+    a.ref.child("durum").set("ayrildi");
+  })
   //member.guild.channels.get('598446314631725057').send("Hoşçakal <@"+ member.user.id +">").then(m =>m.react("😔"));
 });
 client.login(process.env.discord_key);
