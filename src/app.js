@@ -102,6 +102,12 @@ client.on('guildMemberAdd', member => {
       {
         firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif"});
       }
+      else
+      {
+        firebase.database().ref("discord_userlist/"+member.user.id).once("value").then(function(a){
+          a.ref.child("durum").set("aktif");
+        })
+      }
     }
   )
 });
