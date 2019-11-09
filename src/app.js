@@ -83,19 +83,27 @@ client.on("message",(message) => {
     }
   }
   // selam cevapları
-  if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
+  if (!message.isMentioned("608894953489432616") && message.author.id !="608894953489432616")
   {
-    message.channel.send("Merhaba "+message.author.username);
+    if (message.content.startsWith("selam") || message.content.startsWith("Selam") || message.content.startsWith("Merhaba bot") || message.content.startsWith("merhaba bot"))
+    {
+      message.channel.send("Merhaba "+message.author.username);
+    }
+    if (message.content.startsWith("naber") || message.content.startsWith("Naber"))
+    {
+      message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
+    }
+    if (message.content.startsWith("nasılsın") || message.content.startsWith("nasılsın"))
+    {
+      message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
+    }
   }
-  if (message.content.startsWith("naber") || message.content.startsWith("Naber"))
-  {
-    message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
-  }
+
   //çeviri
-  if (message.isMentioned("608894953489432616") && message.author.id !="608894953489432616")
+  else if (message.isMentioned("608894953489432616") && message.author.id !="608894953489432616")
   {
-     var m = message.content.split(">");
-     var v = encodeURI(m[1]);
+    var m = message.content.split(">");
+    var v = encodeURI(m[1]);
     fetch("https://translate.yandex.net/api/v1.5/tr.json/detect?&key="+process.env.ceviri+"&text="+v)
     .then(a=>a.text()).then(function(a)
     {
@@ -109,7 +117,7 @@ client.on("message",(message) => {
           fetch("https://translate.yandex.net/api/v1.5/tr.json/translate?key="+process.env.ceviri+"&text="+v+"&lang=en-tr&format=plain").then(a=>a.text()).then(a=>message.reply(JSON.parse(a).text[0]));
       }
     }).catch(a=>console.log(a));
-}
+  }
 });
 client.on('guildMemberAdd', member => {
    member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
