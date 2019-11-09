@@ -93,7 +93,7 @@ client.on("message",(message) => {
     {
       message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
     }
-    if (message.content.startsWith("nasılsın") || message.content.startsWith("nasılsın"))
+    if (message.content.startsWith("nasılsın") || message.content.startsWith("Nasılsın"))
     {
       message.channel.send("İyi, sen nasılsın "+message.author.username+" ?");
     }
