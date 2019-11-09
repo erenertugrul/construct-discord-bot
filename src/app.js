@@ -78,7 +78,7 @@ client.on("message",(message) => {
               }
             }
           )
-        }))
+        }));
       }
     }
   }
