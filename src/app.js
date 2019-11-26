@@ -80,6 +80,17 @@ client.on("message",(message) => {
           )
         }));
       }
+      if (message.content === "!aktif")
+      {
+        var list = new Array
+        const guild = client.guilds.get('598446314165895168');
+        var aktiflist = guild.members.filter(function(a){if(a.presence.status !== 'offline'){list.push(a.user.username)}});
+        const embed = new RichEmbed()
+        .setTitle('Aktif üyeler')
+        .setColor(0xFF0000)
+        .setDescription(list)
+        message.channel.send(embed);
+      }
     }
   }
   // selam cevapları
