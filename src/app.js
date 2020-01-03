@@ -82,9 +82,10 @@ client.on("message",(message) => {
       }
       if (message.content === "!aktif")
       {
-        var list = new Array
+        var list = new Array;
         const guild = client.guilds.get('598446314165895168');
-        var aktiflist = guild.members.filter(function(a){if(a.presence.status !== 'offline'){list.push(a.user.username)}});
+        //var aktiflist = guild.members.filter(function(a){if(a.presence.status !== 'offline'){list.push(a.user.username)}});
+        guild.members.filter(function(a){if(a.presence.status !== 'offline'){list.push(a.user.username)}});
         message.channel.send(list);
       }
     }
