@@ -44,7 +44,7 @@ class topluluk extends Command
           {
             var embed = new RichEmbed()
             .setTitle("Duyuru")
-            .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/gorsel/icon/duyuru.png')
+            .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/gorsel/duyuru.png')
             .setImage(t_g)
             .setColor("RANDOM")
             .setDescription(j.topluluk)
@@ -54,7 +54,7 @@ class topluluk extends Command
           {
             var embed = new RichEmbed()
             .setTitle("Duyuru")
-            .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/gorsel/icon/duyuru.png')
+            .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/gorsel/duyuru.png')
             .setColor("RANDOM")
             .setDescription(j.topluluk)
             this.client.channels.get("599557187819405312").send("@here",embed);
