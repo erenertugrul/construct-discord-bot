@@ -147,7 +147,7 @@ client.on('guildMemberAdd', member => {
 });
 client.on('guildMemberRemove', member => {
   member.guild.channels.get('598446314631725057').send("Hoşçakal "+ member.user.tag).then(m =>m.react("😔"));
-  firebase.database().ref("discord_userlist/"+message.user.id).once("value").then(function(a){
+  firebase.database().ref("discord_userlist/"+member.user.id).once("value").then(function(a){
     a.ref.child("durum").set("ayrildi");
   })
   //member.guild.channels.get('598446314631725057').send("Hoşçakal <@"+ member.user.id +">").then(m =>m.react("😔"));
