@@ -71,10 +71,11 @@ client.on("message",(message) => {
               }
               else
               {
-                firebase.database().ref("discord_userlist/"+x.user.id).once("value").then(function(a){
+                /*firebase.database().ref("discord_userlist/"+x.user.id).once("value").then(function(a){
                   a.ref.child("durum").set("aktif");
                   a.ref.child("tag").set(x.user.tag);
-                })
+                })*/
+                firebase.database().ref("discord_userlist/"+x.user.id).update({"kalp":"0"});
               }
             }
           )
@@ -126,6 +127,27 @@ client.on("message",(message) => {
       }
     }).catch(a=>console.log(a));
   }
+
+  // kalp sayar
+  const filter = (reaction, user) => {
+    return reaction.emoji.name === '❤️';
+  };
+
+  const collector = message.createReactionCollector(filter, { time: 1200000 });
+  collector.on('collect', (reaction, reactionCollector) => {
+
+  });
+
+  collector.on('end', collected => {
+    var id = collected.map(a=>a.message.author.id);
+    console.log(`Collected ${collected.size} items`);
+    firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
+      firebase.database().ref("discord_userlist/"+id).once("value").then(function(a){
+        a.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
+      })
+    })
+  });
+
 });
 client.on('guildMemberAdd', member => {
    member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
@@ -134,7 +156,7 @@ client.on('guildMemberAdd', member => {
     function(a){
       if (a.child(member.user.id).val() == null)
       {
-        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif"});
+        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif","kalp":"0"});
       }
       else
       {
