@@ -75,7 +75,7 @@ client.on("message",(message) => {
                   a.ref.child("durum").set("aktif");
                   a.ref.child("tag").set(x.user.tag);
                 })*/
-                firebase.database().ref("discord_userlist/"+x.user.id).update({"kalp":0});
+                firebase.database().ref("discord_userlist/"+x.user.id).update({"isim":x.user.username});
               }
             }
           )

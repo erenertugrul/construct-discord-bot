@@ -64,11 +64,11 @@ module.exports = class PingCommand extends Command {
 	              	loadImage("./src/gorsel/kalp.png").then(image =>{
 	                	ctx.fillStyle = "#dc2053";
 		                ctx.font = '30px futura-pt-medium'
-		                ctx.fillText(k+"K", 180, 100);
+		                ctx.fillText(k, 180, 100);
 		                ctx.drawImage(image, 150, 77, 26, 24);
 		                ctx.font = "50px futura-pt-medium";
 		                ctx.fillStyle = "white";
-		                ctx.fillText("#"+(parseInt(b)+1), 380, 90);
+		                ctx.fillText((parseInt(b)+1)+"#", 380, 90);
 		                msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'kalp.png' }] });
 	              	});
 		      	});
