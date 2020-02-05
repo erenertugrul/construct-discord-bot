@@ -67,7 +67,7 @@ client.on("message",(message) => {
             function(a){
               if (a.child(x.user.id).val() == null)
               {
-                firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":"0"});
+                firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":0});
               }
               else
               {
@@ -75,7 +75,7 @@ client.on("message",(message) => {
                   a.ref.child("durum").set("aktif");
                   a.ref.child("tag").set(x.user.tag);
                 })*/
-                firebase.database().ref("discord_userlist/"+x.user.id).update({"kalp":"0"});
+                firebase.database().ref("discord_userlist/"+x.user.id).update({"kalp":0});
               }
             }
           )
@@ -133,7 +133,7 @@ client.on("message",(message) => {
     return reaction.emoji.name === '❤️';
   };
 
-  const collector = message.createReactionCollector(filter, { time: 1200000 });
+  const collector = message.createReactionCollector(filter, { time: 86400000 });
   collector.on('collect', (reaction, reactionCollector) => {
 
   });
@@ -156,7 +156,7 @@ client.on('guildMemberAdd', member => {
     function(a){
       if (a.child(member.user.id).val() == null)
       {
-        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif","kalp":"0"});
+        firebase.database().ref("discord_userlist/"+member.user.id).set({"isim":member.user.username,"key":"0","tag":member.user.tag,"durum":"aktif","kalp":0});
       }
       else
       {
