@@ -67,14 +67,10 @@ client.on("message",(message) => {
             function(a){
               if (a.child(x.user.id).val() == null)
               {
-                firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":0});
+                firebase.database().ref("discord_userlist/"+x.user.id).set({"isim":x.user.username,"key":"0","tag":x.user.tag,"durum":"aktif","kalp":0});
               }
               else
               {
-                /*firebase.database().ref("discord_userlist/"+x.user.id).once("value").then(function(a){
-                  a.ref.child("durum").set("aktif");
-                  a.ref.child("tag").set(x.user.tag);
-                })*/
                 firebase.database().ref("discord_userlist/"+x.user.id).update({"isim":x.user.username});
               }
             }
@@ -133,25 +129,24 @@ client.on("message",(message) => {
     return reaction.emoji.name === '❤️';
   };
 
-  const collector = message.createReactionCollector(filter, { time: 86400000 });
+  const collector = message.createReactionCollector(filter, { time: 7200000 });
   collector.on('collect', (reaction, reactionCollector) => {
 
   });
 
   collector.on('end', collected => {
     var id = collected.map(a=>a.message.author.id);
-    console.log(`Collected ${collected.size} items`);
+    //console.log(`Collected ${collected.size} items`);
     firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
       firebase.database().ref("discord_userlist/"+id).once("value").then(function(a){
         a.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
       })
     })
   });
-
 });
 client.on('guildMemberAdd', member => {
-   member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
-   firebase.database().ref("discord_userlist").once("value")
+  member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
+  firebase.database().ref("discord_userlist").once("value")
   .then(
     function(a){
       if (a.child(member.user.id).val() == null)
@@ -178,5 +173,7 @@ client.on('guildMemberRemove', member => {
 client.on("guildBanRemove", function(guild, member){
     guild.channels.get('598446314631725057').send("geri gel "+ member.username+"!").then(m =>m.react("😭"));
 });
-
+client.on("userUpdate",function(o,n){
+  firebase.database().ref("discord_userlist/"+n.user.id).update({"isim":n.user.username});
+});
 client.login(process.env.discord_key);
