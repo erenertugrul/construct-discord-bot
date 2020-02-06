@@ -136,14 +136,14 @@ client.on("message",(message) => {
 
   collector.on('end', collected => {
     var id = collected.map(a=>a.message.author.id);
-    //console.log(`Collected ${collected.size} items`);
-    firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
-      firebase.database().ref("discord_userlist/"+id).once("value").then(function(a){
-        console.log("hmm :"+id);
-        a.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
-      })
-    })
-  });
+    try
+    {
+      firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
+          console.log("hmm :"+id);
+          v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
+      });
+    }catch(e){console.log("coll"+e)};
+
 });
 client.on('guildMemberAdd', member => {
   member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
