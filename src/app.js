@@ -142,7 +142,7 @@ client.on("message",(message) => {
           console.log("hmm :"+id);
           v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
       });
-    }catch(e){console.log("coll"+e)};
+    }.catch(e){console.log("coll"+e)};
   });
 client.on('guildMemberAdd', member => {
   member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
