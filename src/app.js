@@ -139,6 +139,7 @@ client.on("message",(message) => {
     //console.log(`Collected ${collected.size} items`);
     firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
       firebase.database().ref("discord_userlist/"+id).once("value").then(function(a){
+        console.log("hmm :"+id);
         a.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
       })
     })
