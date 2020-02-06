@@ -1,4 +1,3 @@
-const { oneLine } = require('common-tags');
 const { Command } = require('discord.js-commando');
 const firebase = require('firebase');
 const { registerFont,createCanvas, loadImage } = require('canvas');
