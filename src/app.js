@@ -174,6 +174,11 @@ client.on("guildBanRemove", function(guild, member){
     guild.channels.get('598446314631725057').send("geri gel "+ member.username+"!").then(m =>m.react("😭"));
 });
 client.on("userUpdate",function(o,n){
-  firebase.database().ref("discord_userlist/"+n.user.id).update({"isim":n.user.username});
+  try{
+    firebase.database().ref("discord_userlist/"+n.user.id).once("value").then(async (v) =>{
+     v.ref.update({"isim":n.user.username});
+  })
+  }
+  catch(e){};
 });
 client.login(process.env.discord_key);
