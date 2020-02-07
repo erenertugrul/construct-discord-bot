@@ -141,7 +141,7 @@ client.on("message",(message) => {
       try
       {
         firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
-          console.log("hmm :"+id+ "kalp:" collected.size);
+          console.log("hmm :"+id+"kalp: "+collected.size);
           v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
         });
       }catch(e){console.log("coll"+e)};
