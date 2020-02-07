@@ -126,22 +126,27 @@ client.on("message",(message) => {
 
   // kalp sayar
   const filter = (reaction, user) => {
-    return reaction.emoji.name === '❤️';
+    return reaction.emoji.name === '❤️' && user.id !== message.author.id;
   };
 
   const collector = message.createReactionCollector(filter, { time: 7200000 });
   collector.on('collect', (reaction, reactionCollector) => {
 
   });
+
   collector.on('end', collected => {
-    var id = collected.map(a=>a.message.author.id);
-    try
+  var id = collected.map(a=>a.message.author.id);
+    if (id != "")
     {
-      firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
-          console.log("hmm :"+id);
+      try
+      {
+        firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
+          console.log("hmm :"+id+ "kalp:" collected.size);
           v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
-      });
-    }catch(e){console.log("coll"+e)};
+        });
+      }catch(e){console.log("coll"+e)};
+    }
+    else{console.log("bb")};
   });
 });
 client.on('guildMemberAdd', member => {
