@@ -29,7 +29,7 @@ class sıra extends Command
                 var aa= snap.val();
                 var si = 0;
                 var aaa = _.orderBy(aa, ['durum', 'kalp'], ['asc', 'desc']);
-                for (var i = 0; i < aaa.length; i++) {
+                for (var i = 0; i < 10; i++) {
                     si += 1;
                     lider_list.push(si+"- "+aaa[i].isim + " : "+aaa[i].kalp);
                 };
