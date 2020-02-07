@@ -135,14 +135,15 @@ client.on("message",(message) => {
   });
 
   collector.on('end', collected => {
-  var id = collected.map(a=>a.message.author.id);
+    var id = collected.map(a=>a.message.author.id);
+    var ka = collected.map(a=>a.count);
     if (id != "")
     {
       try
       {
         firebase.database().ref("discord_userlist/"+id).once("value").then(async (v) =>{
-          console.log("hmm :"+id+"kalp: "+collected.size);
-          v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+collected.size);
+          console.log("hmm :"+id+"kalp: "+ka);
+          v.ref.child("kalp").set(parseInt(v.toJSON().kalp)+ka);
         });
       }catch(e){console.log("coll"+e)};
     }
