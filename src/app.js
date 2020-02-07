@@ -136,7 +136,7 @@ client.on("message",(message) => {
 
   collector.on('end', collected => {
     var id = collected.map(a=>a.message.author.id);
-    var ka = collected.map(a=>a.count);
+    var ka = parseInt(collected.map(a=>a.count));
     if (id != "")
     {
       try
