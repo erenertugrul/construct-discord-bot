@@ -1,19 +1,19 @@
 const { Command } = require('discord.js-commando');
-class sil extends Command
+class online extends Command
 {
     constructor(client)
     {
         super(client,{
-            name: 'sil',
+            name: 'online',
             group: 'yonetim',
-            memberName: 'sil',
-            description: 'bot sil durmunu değiştir ',
-            examples: ['sil'],
+            memberName: 'online',
+            description: 'bot online durmunu değiştir ',
+            examples: ['online'],
             args: [
                 {
-                  key: 'sil',
-                  prompt: 'silinecek mesaj sayısını yazın',
-                  type: 'integer',
+                  key: 'online',
+                  prompt: 'Online durumu seçin? \n online \n idle \n invisible \n dnd',
+                  type: 'string',
                 }
             ]
         })
@@ -25,20 +25,18 @@ class sil extends Command
         return msg.member.hasPermission('Admin') || this.client.isOwner(msg.author) || (msg.member.id == "174242106766786570");
     }
   */
-    run(msg,sayi) {
-        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037")|| (msg.author.id == "196754325794455552"))
-        {
-           if (msg.channel.type == 'text') {
-            msg.channel.fetchMessages({limit: sayi.sil})
-           .then(function(list){
-            //var a = list.filter(m => m.author.username == "eren")
-            msg.channel.bulkDelete(list);
-                
-            }, function(err){msg.channel.send("15 günden eski mesajlari silemezsiniz")});
-            }
+    run(msg,online) {
+      let arg = JSON.stringify(online);
+      let j = JSON.parse(arg);
+      if (msg.channel.type == "dm")
+      {
+        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037")){
+            this.client.user.setStatus(j.online)
         }
+        
     }
+    }   
 }
 
 
-module.exports = sil;
+module.exports = online;
