@@ -34,7 +34,7 @@ class bedavaoyun extends Command
       var t_g = Attachment[0].url;
       if (msg.channel.type == "dm")
       {
-        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896"))
+        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
         {
             var embed = new RichEmbed()
             .setTitle("Bedava Oyun")

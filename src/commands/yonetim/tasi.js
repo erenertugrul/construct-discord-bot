@@ -67,36 +67,38 @@ module.exports= class tasi extends Command {
 
   // eslint-disable-next-line
   async run(msg, { amount, channel }) {
-    if (amount <= 0) {
-      msg.author.send('Mesaj sayısı 0 dan büyük olmalıdır');
-      return;
-    }
-
-    let messages = await msg.channel.fetchMessages({ limit: amount + 1 });
-    messages = messages
-      .filter((m) => m.id !== messages.first().id)
-      .sort((a, b) => a.createdTimestamp - b.createdTimestamp);
-      //console.log(messages);
-    // messages.shift();
-    // messages = messages.reverse();
-      //console.log(`Copying ${messages.size} messages`);
-      // eslint-disable-next-line
-      for (let m of messages.values()) {
-        // eslint-disable-next-line
-        await duplicateMessage(m, channel.id, content => content)
-        //console.log(m.cleanContent);
+    if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
+    {
+      if (amount <= 0) {
+        msg.author.send('Mesaj sayısı 0 dan büyük olmalıdır');
+        return;
       }
 
-      const text = 'mesajlar siliniyor...';
-      let x = 0;
+      let messages = await msg.channel.fetchMessages({ limit: amount + 1 });
+      messages = messages
+        .filter((m) => m.id !== messages.first().id)
+        .sort((a, b) => a.createdTimestamp - b.createdTimestamp);
+        //console.log(messages);
+      // messages.shift();
+      // messages = messages.reverse();
+        //console.log(`Copying ${messages.size} messages`);
+        // eslint-disable-next-line
+        for (let m of messages.values()) {
+          // eslint-disable-next-line
+          await duplicateMessage(m, channel.id, content => content)
+          //console.log(m.cleanContent);
+        }
 
-      //const msgDel = await msg.author.send(text);
-      await Promise.all(messages.map((m) => m.delete().then(() => {
-        //msgDel.edit(`${text} ${++x}/${messages.array().length}`);
-      })));
+        const text = 'mesajlar siliniyor...';
+        let x = 0;
 
-      const sent = await msg.channel.send(`${messages.array().length} mesaj <#${channel.id}> kanalında taşındı. Lütfen ordan devam edin.`);
-      sent.delete(300000);
-    
-  }
+        //const msgDel = await msg.author.send(text);
+        await Promise.all(messages.map((m) => m.delete().then(() => {
+          //msgDel.edit(`${text} ${++x}/${messages.array().length}`);
+        })));
+
+        const sent = await msg.channel.send(`${messages.array().length} mesaj <#${channel.id}> kanalına taşındı. Lütfen ordan devam edin.`);
+        sent.delete(300000);
+    };
+  };
 }

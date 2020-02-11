@@ -29,12 +29,12 @@ class sil extends Command
         if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
         {
            if (msg.channel.type == 'text') {
-            msg.channel.fetchMessages({limit: sayi.sil})
+            msg.channel.fetchMessages({limit: 3})
            .then(function(list){
             //var a = list.filter(m => m.author.username == "eren")
             msg.channel.bulkDelete(list);
                 
-            }, function(err){msg.channel.send("15 günden eski mesajlari silemezsiniz")});
+            }, function(err){msg.channel.send(e)});
             }
         }
     }
