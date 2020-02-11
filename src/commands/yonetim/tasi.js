@@ -43,7 +43,7 @@ const duplicateMessage = async (
 module.exports= class tasi extends Command {
   constructor(client) {
     super(client, {
-      name: 'tasi',
+      name: 'taşı',
       memberName: 'tasi',
       group: 'yonetim',
       description: 'tasi a certain amount of messages from one channel to another',
@@ -69,7 +69,7 @@ module.exports= class tasi extends Command {
   async run(msg, { amount, channel }) {
     if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
     {
-      if (amount >= 0 && amount <= 10) {
+      if (amount <= 0 || amount >= 10) {
         msg.author.send('Mesaj sayısı 0 dan büyük olmalıdır');
         return;
       }
