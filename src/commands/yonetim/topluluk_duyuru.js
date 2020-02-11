@@ -38,7 +38,7 @@ class topluluk extends Command
       {}
       if (msg.channel.type == "dm")
       {
-        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
+        if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037")|| (msg.author.id == "196754325794455552"))
         {
           if (t_g)
           {
