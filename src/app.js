@@ -181,7 +181,8 @@ client.on("guildBanRemove", function(guild, member){
 });
 client.on("userUpdate",function(o,n){
   console.log("kullanıcı adı değişti");
-  console.log("isim "+n.user.id);
+  console.log("oo"+o);
+  console.log("bbb "+n);
   try{
     firebase.database().ref("discord_userlist/"+n.user.id).once("value").then(async (v) =>{
      v.ref.update({"isim":n.user.username});

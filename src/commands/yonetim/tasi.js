@@ -46,7 +46,7 @@ module.exports= class tasi extends Command {
       name: 'taşı',
       memberName: 'tasi',
       group: 'yonetim',
-      description: 'tasi a certain amount of messages from one channel to another',
+      description: 'mesajları başka kanala taşır',
       examples: ['tasi 10 #kanaladi'],
       extraArgs: false,
       deleteCmd: true,
