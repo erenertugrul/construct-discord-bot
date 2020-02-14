@@ -179,6 +179,21 @@ client.on('guildMemberRemove', member => {
 client.on("guildBanRemove", function(guild, member){
     guild.channels.get('598446314631725057').send("geri gel "+ member.username+"!").then(m =>m.react("😭"));
 });
+
+client.on("guildBanAdd", function(guild, member){
+  if (member.username.length <= 16){
+    const canvas = createCanvas(862, 720)
+    const ctx = canvas.getContext('2d')
+    loadImage("./src/gorsel/banlandi.png").then((image) => {
+        ctx.drawImage(image, 0,0, 862, 720);
+        ctx.font = "35px Comic Sans MS";
+        ctx.fillStyle = "black";
+        ctx.fillText(member.username+"'e noldu.", 150, 70);
+        guild.channels.get('598446314631725057').send({ files: [{ attachment: canvas.toBuffer(), name: 'ban.png' }] });
+    });
+  }
+});
+
 client.on("userUpdate",function(o,n){
   console.log("kullanıcı adı değişti");
   console.log("oo"+o);
