@@ -72,7 +72,7 @@ module.exports= class tasi extends Command {
       if (amount <= 0 || amount >= 100) {
         msg.author.send('Mesaj sayısı 0 ile 100 arasında olmalıdır');
         return;
-      }
+      };
 
       let messages = await msg.channel.fetchMessages({ limit: amount + 1 });
       messages = messages
@@ -85,18 +85,13 @@ module.exports= class tasi extends Command {
         // eslint-disable-next-line
         for (let m of messages.values()) {
           // eslint-disable-next-line
-          await duplicateMessage(m, channel.id, content => content)
+          await duplicateMessage(m, channel.id, content => content);
           //console.log(m.cleanContent);
-        }
-
-        const text = 'mesajlar siliniyor...';
-        let x = 0;
-
+        };
         //const msgDel = await msg.author.send(text);
         await Promise.all(messages.map((m) => m.delete().then(() => {
           //msgDel.edit(`${text} ${++x}/${messages.array().length}`);
         })));
-
         const sent = await msg.channel.send(`${messages.array().length} mesaj <#${channel.id}> kanalına taşındı. Lütfen ordan devam edin.`);
         sent.delete(300000);
     };

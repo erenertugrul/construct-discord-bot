@@ -185,11 +185,11 @@ client.on("guildBanAdd", function(guild, member){
     const canvas = createCanvas(862, 720)
     const ctx = canvas.getContext('2d')
     loadImage("./src/gorsel/banlandi.png").then((image) => {
-        ctx.drawImage(image, 0,0, 862, 720);
-        ctx.font = "35px Comic Sans MS";
-        ctx.fillStyle = "black";
-        ctx.fillText(member.username+"'e noldu.", 150, 70);
-        guild.channels.get('598446314631725057').send({ files: [{ attachment: canvas.toBuffer(), name: 'ban.png' }] });
+      ctx.drawImage(image, 0,0, 862, 720);
+      ctx.font = "35px Comic Sans MS";
+      ctx.fillStyle = "black";
+      ctx.fillText(member.username+"'e noldu.", 150, 70);
+      guild.channels.get('598446314631725057').send({ files: [{ attachment: canvas.toBuffer(), name: 'ban.png' }] });
     });
   }
 });
@@ -197,10 +197,9 @@ client.on("guildBanAdd", function(guild, member){
 client.on("userUpdate",function(o,n){
   console.log("kullanıcı adı değişti");
   console.log("oo"+o);
-  console.log("bbb "+n);
   try{
-    firebase.database().ref("discord_userlist/"+n.user.id).once("value").then(async (v) =>{
-     v.ref.update({"isim":n.user.username});
+    firebase.database().ref("discord_userlist/"+o.id).once("value").then(async (v) =>{
+     v.ref.update({"isim":o.username});
   })
   }
   catch(e){};
