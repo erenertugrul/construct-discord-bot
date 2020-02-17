@@ -147,7 +147,7 @@ client.on("message",(message) => {
         });
       }catch(e){console.log("coll"+e)};
     }
-    else{console.log("bb")};
+    //else{console.log("bb")};
   });
 });
 client.on('guildMemberAdd', member => {
@@ -197,6 +197,8 @@ client.on("guildBanAdd", function(guild, member){
 client.on("userUpdate",function(o,n){
   console.log("kullanıcı adı değişti");
   console.log("oo"+o);
+  console.log("oo"+o.id);
+  console.log("oo"+o.username);
   try{
     firebase.database().ref("discord_userlist/"+o.id).once("value").then(async (v) =>{
      v.ref.update({"isim":o.username});
