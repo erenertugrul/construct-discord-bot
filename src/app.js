@@ -90,7 +90,7 @@ client.on("message",(message) => {
         var m = message.content.split("!gonder");
         var v = m[1];
         var embed = new RichEmbed()
-        .setTitle("Duyuru")
+        .setTitle("Kurallar")
         .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/duyuru.png')
         .setColor("#e41b1b")
         .setDescription(v)
