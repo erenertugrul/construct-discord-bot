@@ -85,6 +85,17 @@ client.on("message",(message) => {
         guild.members.filter(function(a){if(a.presence.status !== 'offline'){list.push(a.user.username)}});
         message.channel.send(list);
       }
+      if (message.content.startsWith("!gonder"))
+      {
+        var m = message.content.split("!gonder");
+        var v = m[1];
+        var embed = new RichEmbed()
+        .setTitle("Duyuru")
+        .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/duyuru.png')
+        .setColor("#e41b1b")
+        .setDescription(v)
+        client.channels.get("622776343901503518").send(embed);
+      }
     }
   }
   // selam cevapları
