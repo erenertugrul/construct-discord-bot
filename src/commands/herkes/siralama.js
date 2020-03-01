@@ -34,7 +34,7 @@ class sıra extends Command
                     lider_list.push(si+"- "+aaa[i].isim + " : "+aaa[i].kalp);
                 };
                 var embed = new RichEmbed()
-                .setTitle('💕 Listesi')
+                .setTitle('💕 Sıralaması')
                 .setColor(0xFF0000)
                 .setDescription(lider_list)
                 msg.channel.send(embed);
