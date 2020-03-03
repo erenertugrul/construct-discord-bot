@@ -94,7 +94,7 @@ client.on("message",(message) => {
         .setTitle("Kurallar")
         .setThumbnail('https://raw.githubusercontent.com/erenertugrul/construct-discord-bot/master/src/icon/duyuru.png')
         .setColor("#e41b1b")
-        .setDescription(v)
+        .setDescription(v);
         client.channels.get("622776343901503518").send(embed);
       }
     }
