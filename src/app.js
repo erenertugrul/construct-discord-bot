@@ -3,6 +3,7 @@ const  Commando  = require('discord.js-commando');
 const path = require('path');
 const scirra = require('./construct.js');
 var firebase = require('firebase');
+const { registerFont,createCanvas, loadImage } = require('canvas');
 var { RichEmbed } = require('discord.js');
 require('dotenv').config();
 require('./fb.js');
@@ -181,7 +182,7 @@ client.on('guildMemberAdd', member => {
   )
 });
 client.on('guildMemberRemove', member => {
-  member.guild.channels.get('598446314631725057').send("Hoşçakal "+ member.user.tag).then(m =>m.react("😔"));
+  //member.guild.channels.get('598446314631725057').send("Hoşçakal "+ member.user.tag).then(m =>m.react("😔"));
   firebase.database().ref("discord_userlist/"+member.user.id).once("value").then(function(a){
     a.ref.child("durum").set("ayrildi");
   })
@@ -193,7 +194,7 @@ client.on("guildBanRemove", function(guild, member){
 });
 
 client.on("guildBanAdd", function(guild, member){
-  if (member.username.length <= 16){
+  /*if (member.username.length <= 16){
     const canvas = createCanvas(862, 720)
     const ctx = canvas.getContext('2d')
     loadImage("./src/gorsel/banlandi.png").then((image) => {
@@ -203,7 +204,7 @@ client.on("guildBanAdd", function(guild, member){
       ctx.fillText(member.username+"'e noldu.", 150, 70);
       guild.channels.get('598446314631725057').send({ files: [{ attachment: canvas.toBuffer(), name: 'ban.png' }] });
     });
-  }
+  }*/
 });
 
 client.on("userUpdate",function(o,n){
