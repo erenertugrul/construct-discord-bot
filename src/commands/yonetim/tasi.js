@@ -67,7 +67,7 @@ module.exports= class tasi extends Command {
 
   // eslint-disable-next-line
   async run(msg, { amount, channel }) {
-    if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037"))
+    if ((msg.author.id == "174242106766786570") || (msg.author.id == "478933409276624896") || (msg.author.id == "579257592430460929") || (msg.author.id == "350009686117974037")|| (msg.author.id == "531086739876478976") || (msg.author.id == "196754325794455552"))
     {
       if (amount <= 0 || amount >= 100) {
         msg.author.send('Mesaj sayısı 0 ile 100 arasında olmalıdır');
