@@ -47,30 +47,61 @@ module.exports = class PingCommand extends Command {
 	          	var a = _.orderBy(aa, ['durum', 'kalp'], ['asc', 'desc']);
 	          	var b =_.findKey(a, ['isim', msg.author.username]);
 	          	var k = a[b].kalp;
-	          	loadImage(msg.author.avatarURL).then((image) => {
-	          		roundRect(10, 10, 450, 120, 20);
-	              	ctx.save();
-	              	ctx.beginPath();
-	              	ctx.arc(75, 70, 50, 0, Math.PI * 2, true);
-		            ctx.closePath();
-		            ctx.clip();
-					ctx.stroke();
-					ctx.drawImage(image, 25,20, 100, 100);
-					ctx.restore();
-					ctx.fillStyle = "white";
-					ctx.font = '30px futura-pt-medium';
-					ctx.fillText(msg.author.username, 150, 55);
-	              	loadImage("./src/gorsel/kalp.png").then(image =>{
-	                	ctx.fillStyle = "#dc2053";
-		                ctx.font = '30px futura-pt-medium'
-		                ctx.fillText(k, 180, 100);
-		                ctx.drawImage(image, 150, 77, 26, 24);
-		                ctx.font = "50px futura-pt-medium";
-		                ctx.fillStyle = "white";
-		                ctx.fillText((parseInt(b)+1)+"#", 380, 90);
-		                msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'kalp.png' }] });
-	              	});
-		      	});
+
+	          	if (msg.author.avatarURL !== null)
+	          	{
+		          	loadImage(msg.author.avatarURL).then((image) => {
+		          		roundRect(10, 10, 450, 120, 20);
+		              	ctx.save();
+		              	ctx.beginPath();
+		              	ctx.arc(75, 70, 50, 0, Math.PI * 2, true);
+			            ctx.closePath();
+			            ctx.clip();
+						ctx.stroke();
+						ctx.drawImage(image, 25,20, 100, 100);
+						ctx.restore();
+						ctx.fillStyle = "white";
+						ctx.font = '30px futura-pt-medium';
+						ctx.fillText(msg.author.username, 150, 55);
+		              	loadImage("./src/gorsel/kalp.png").then(image =>{
+		                	ctx.fillStyle = "#dc2053";
+			                ctx.font = '30px futura-pt-medium'
+			                ctx.fillText(k, 180, 100);
+			                ctx.drawImage(image, 150, 77, 26, 24);
+			                ctx.font = "50px futura-pt-medium";
+			                ctx.fillStyle = "white";
+			                ctx.fillText((parseInt(b)+1)+"#", 380, 90);
+			                msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'kalp.png' }] });
+		              	});
+		      		});
+	          	}
+	          	else
+	          	{
+		          	loadImage("./src/gorsel/no_avatar.png").then((image) => {
+		          		roundRect(10, 10, 450, 120, 20);
+		              	ctx.save();
+		              	ctx.beginPath();
+		              	ctx.arc(75, 70, 50, 0, Math.PI * 2, true);
+			            ctx.closePath();
+			            ctx.clip();
+						ctx.stroke();
+						ctx.drawImage(image, 25,20, 100, 100);
+						ctx.restore();
+						ctx.fillStyle = "white";
+						ctx.font = '30px futura-pt-medium';
+						ctx.fillText(msg.author.username, 150, 55);
+		              	loadImage("./src/gorsel/kalp.png").then(image =>{
+		                	ctx.fillStyle = "#dc2053";
+			                ctx.font = '30px futura-pt-medium'
+			                ctx.fillText(k, 180, 100);
+			                ctx.drawImage(image, 150, 77, 26, 24);
+			                ctx.font = "50px futura-pt-medium";
+			                ctx.fillStyle = "white";
+			                ctx.fillText((parseInt(b)+1)+"#", 380, 90);
+			                msg.channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'kalp.png' }] });
+		              	});
+			      	});
+	        	};
 	      	};
 		    }
 		    catch(e)
