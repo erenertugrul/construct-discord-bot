@@ -221,7 +221,7 @@ client.on("userUpdate",function(o,n){
   catch(e){};
 });
 client.login(process.env.discord_key);
-
+/*
 const server = http.createServer((req, res) => {
   let data = []
   req.on('data', chunk => {
@@ -260,3 +260,4 @@ const server = http.createServer((req, res) => {
     }
   })
 }).listen(8000);
+*/

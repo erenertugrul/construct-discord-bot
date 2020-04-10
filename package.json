@@ -7,9 +7,6 @@
   "author": "Eren Ertuğrul",
   "license": "MIT",
   "homepage":"https://erenertugrul.com.tr",
-  "scripts": {
-    "start": "node src/app.js"
-  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "discord.js": "^11.5.1",
