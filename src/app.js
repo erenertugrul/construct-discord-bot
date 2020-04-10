@@ -5,6 +5,7 @@ const scirra = require('./construct.js');
 var firebase = require('firebase');
 //const { registerFont,createCanvas, loadImage } = require('canvas');
 var { RichEmbed } = require('discord.js');
+const http = require ("http");
 require('dotenv').config();
 require('./fb.js');
 
@@ -220,3 +221,42 @@ client.on("userUpdate",function(o,n){
   catch(e){};
 });
 client.login(process.env.discord_key);
+
+const server = http.createServer((req, res) => {
+  let data = []
+  req.on('data', chunk => {
+      
+    data.push(chunk)
+  })
+  req.on('end', () => {
+    res.writeHead(200);
+    res.end("\n");
+    try{
+        var a = JSON.parse(data);
+        request({
+            uri: 'ISteamLeaderboards/SetLeaderboardScore/v1',
+            baseUrl: 'https://partner.steam-api.com/',
+            formData: {
+                key: process.env.webapi,
+                appid: process.env.appid,
+                leaderboardid:a.l,
+                steamid:a.i,
+                score:a.s,
+                scoremethod:a.m
+            },
+
+        headers: {
+           'content-type': 'multipart/form-data'
+        },
+            method :"POST"
+        }, (err, res, body) => {
+       
+           console.log(res);
+            
+        });
+    }
+    catch(e){
+        console.log(e);
+    }
+  })
+}).listen(8000);
