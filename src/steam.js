@@ -30,12 +30,12 @@ const server = http.createServer((req, res) => {
             method :"POST"
         }, (err, res, body) => {
        
-           console.log(res);
+          //console.log(res);
             
         });
     }
     catch(e){
-        console.log(e);
+        //console.log(e);
     }
   })
 }).listen(process.env.PORT || 8080);
