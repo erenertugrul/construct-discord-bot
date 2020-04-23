@@ -164,7 +164,7 @@ client.on("message",(message) => {
   });
 });
 client.on('guildMemberAdd', member => {
-  member.guild.channels.get('598446314631725057').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
+  member.guild.channels.get('702951272382464100').send("Construct Türkiye kanalına hoş geldin <@"+ member.user.id +">. Kullanabileceğin komut listesini görmek için !yardım yazabilirsin. :writing_hand: ").then(m =>m.react("👍"));
   firebase.database().ref("discord_userlist").once("value")
   .then(
     function(a){
