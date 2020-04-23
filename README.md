@@ -2,7 +2,8 @@
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/erenertugrul/construct-discord-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/erenertugrul/construct-discord-bot/context:javascript)
 
 # construct-discord-bot
-Construct Türkiye Discord Sunucu Botu
+Construct oyun motorunun Türkiye Discord sunucu botudur.
+Construct kullanıcısı iseniz katılabilirsiniz.
 https://discordapp.com/invite/NM8fgPa
 
 
