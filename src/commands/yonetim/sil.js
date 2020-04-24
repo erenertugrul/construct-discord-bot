@@ -7,7 +7,7 @@ class sil extends Command
             name: 'sil',
             group: 'yonetim',
             memberName: 'sil',
-            description: 'bot sil durmunu değiştir ',
+            description: 'mesaj siler ',
             examples: ['sil'],
             args: [
                 {
