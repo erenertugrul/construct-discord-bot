@@ -4,7 +4,7 @@
 # construct-discord-bot
 Construct oyun motorunun Türkiye Discord sunucu botudur.
 Construct kullanıcısı iseniz katılabilirsiniz.
-https://discordapp.com/invite/NM8fgPa
+https://discordapp.com/invite/4GDQaPN
 
 
 Kurulum
