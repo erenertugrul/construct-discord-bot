@@ -190,7 +190,7 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on("guildBanRemove", function(guild, member){
-    guild.channels.get('598446314631725057').send("geri gel "+ member.username+"!").then(m =>m.react("😭"));
+    //guild.channels.get('702951272382464100').send("geri gel "+ member.username+"!").then(m =>m.react("😭"));
 });
 
 client.on("guildBanAdd", function(guild, member){
