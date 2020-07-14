@@ -21,6 +21,7 @@ client.registry.registerDefaultGroups().registerDefaultTypes().registerDefaultCo
 
 client.on("ready",() => {
   console.log("hazir");
+  client.user.setActivity("Construct 3") 
   setInterval(() => scirra.check_c2(client), 600000);
   setInterval(() => scirra.check_c3(client), 600000);
   scirra.check_c2(client);
